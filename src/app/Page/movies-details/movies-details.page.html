@@ -1,0 +1,34 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-button slot="start" >
+      <ion-back-button defaultHref="/" ></ion-back-button>
+      <!-- <ion-back-button text="back"  color="danger"></ion-back-button>  -->
+    </ion-button>
+    <ion-title>{{information?.Genre}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="information">
+    <ion-card-header>
+      <ion-card-title>{{information.Title}}</ion-card-title>
+      <ion-card-subtitle>{{information.Year}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <img [src]="information.Poster" class="info-img">
+      {{information.Plot}}
+      <ion-item lines="none">
+        <ion-icon slot="start" name="star-outline"></ion-icon>
+        <ion-label>{{information.imdbRating}}</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="contacts"></ion-icon>
+        <ion-label>{{information.Actors}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="full" (click)="openWebSite()" *ngIf="information?.Website && information?.Website !='N/A'">
+    OpenWebSite
+  </ion-button>
+</ion-content>
